@@ -1,18 +1,18 @@
-import { Button, Flex, Image, Text } from "@chakra-ui/react";
+import { Flex, Image, Text } from "@chakra-ui/react";
 import { getFriendlySize } from "../Helpers";
 import { FileStatus, ReactUploadFile } from "../types/types";
+import CancelButton from "./CancelButton";
 import ErrorIcon from "./ErrorIcon";
 import ProgressBar from "./ProgressBar";
 import SuccessIcon from "./SuccessIcon";
 
 const FilePreview = (file: ReactUploadFile) => {
-  console.log(file);
   return (
     <Flex
       minW={"175px"}
       minH={"175px"}
       boxSizing={"border-box"}
-      background={"#FFFFFF"}
+      background={"#EDF1F7"}
       border={"1px solid #A0ABC0"}
       flexFlow={"column"}
       justifyContent="flex-start"
@@ -59,7 +59,7 @@ const FilePreview = (file: ReactUploadFile) => {
         <Text></Text>
       </Flex>
       <Flex mt={"13px"}>
-        <Button>Cancel</Button>
+        <CancelButton />
       </Flex>
     </Flex>
   );
