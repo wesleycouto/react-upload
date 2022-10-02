@@ -43,3 +43,16 @@ export const getFriendlySize = (bytes: number, dp = 1) => {
 
   return `${bytes.toFixed(dp)} ${units[u]}`;
 };
+
+export const generateThumbnail = (
+  file: File,
+  callback: (fileResult: string | ArrayBuffer | null) => void
+) => {
+  let reader = new FileReader();
+
+  reader.onloadend = () => {
+    callback(reader.result);
+  };
+
+  reader.readAsDataURL(file);
+};

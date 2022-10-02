@@ -1,5 +1,6 @@
+import { useEffect, useState } from "react";
 import { Flex, Image, Text } from "@chakra-ui/react";
-import { getFriendlySize } from "../Helpers";
+import { generateThumbnail, getFriendlySize } from "../Helpers";
 import { FileStatus, ReactUploadFile } from "../types/types";
 import CancelButton from "./CancelButton";
 import ErrorIcon from "./ErrorIcon";
@@ -7,6 +8,12 @@ import ProgressBar from "./ProgressBar";
 import SuccessIcon from "./SuccessIcon";
 
 const FilePreview = (file: ReactUploadFile) => {
+  const [thumbmail, setThumbnail] = useState<string | ArrayBuffer | null>(null);
+
+  useEffect(() => {
+    generateThumbnail(file.originalFile, setThumbnail);
+  }, [file]);
+
   return (
     <Flex
       minW={"175px"}
@@ -37,7 +44,7 @@ const FilePreview = (file: ReactUploadFile) => {
             m={"2px"}
             borderRadius="full"
             boxSize="130px"
-            src="https://bit.ly/dan-abramov"
+            src={thumbmail as string}
             alt="Dan Abramov"
           />
         </Flex>
