@@ -5,39 +5,6 @@ import FilePreview from "./FilePreview";
 import { FileStatus, ReactUploadFile, ReactUploadProps } from "./types/types";
 import { createNewReactUploadFile } from "./Helpers";
 
-const mockStatus = (): FileStatus => {
-  const value = Math.floor(Math.random() * 7);
-  let ret: FileStatus = FileStatus.ERROR;
-
-  switch (value) {
-    case 0:
-      ret = FileStatus.SUCCESS;
-      break;
-    case 1:
-      ret = FileStatus.ERROR;
-      break;
-    case 2:
-      ret = FileStatus.UPLOADING;
-      break;
-    case 3:
-      ret = FileStatus.QUEUED;
-      break;
-    case 4:
-      ret = FileStatus.ADDED;
-      break;
-    case 5:
-      ret = FileStatus.ACCEPTED;
-      break;
-    case 6:
-      ret = FileStatus.CANCELED;
-      break;
-    default:
-      break;
-  }
-
-  return ret;
-};
-
 const ReactUpload = ({
   minWidth = "600px",
   minHeight = "300px",
@@ -60,8 +27,8 @@ const ReactUpload = ({
     <DragDrop minH={minHeight} minW={minWidth} onAddFiles={addFiles}>
       {!files ||
         (files.length === 0 && (
-          <Center w={"100%"}>
-            <Text>Drag files here!</Text>
+          <Center w={"100%"} className="clickable">
+            <Text className="clickable">Drag files here!</Text>
           </Center>
         ))}
 

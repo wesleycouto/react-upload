@@ -148,7 +148,11 @@ const DragDrop = ({
       onDragOver={(e) => handleDragOver(e)}
       onDragLeave={(e) => handleDragLeave(e)}
       onDrop={(e) => handleDrop(e)}
-      onClick={() => fileInputRef.current?.click()}
+      onClick={(e: React.MouseEvent<HTMLDivElement>) => {
+        if ((e.target as Element).classList.contains("clickable"))
+          fileInputRef.current?.click();
+      }}
+      className="clickable"
     >
       <Box visibility={"hidden"} position={"absolute"} top={0} left={0}>
         <input

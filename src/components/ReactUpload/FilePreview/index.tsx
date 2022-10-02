@@ -25,7 +25,6 @@ const FilePreview = (file: ReactUploadFile) => {
       py={"6px"}
       flex={"1 0 30%"}
       position={"relative"}
-      onClick={undefined}
       cursor={"default"}
       zIndex={500}
     >
